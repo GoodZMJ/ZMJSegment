@@ -1,0 +1,16 @@
+PODS:
+  - ZMJSegmentVc (0.1.0)
+
+DEPENDENCIES:
+  - ZMJSegmentVc (from `../`)
+
+EXTERNAL SOURCES:
+  ZMJSegmentVc:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ZMJSegmentVc: 251a80fdd3620b316d45381481ad06aa18bf27b0
+
+PODFILE CHECKSUM: 8dd8d2f160102cac1354bb029ade59e5c04dd6ca
+
+COCOAPODS: 1.2.1
