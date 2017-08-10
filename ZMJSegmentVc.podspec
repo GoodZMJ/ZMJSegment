@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZMJSegmentVc'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ZMJSegmentVc.'
+  s.version          = '0.1.1'
+  s.summary          = '一个选项卡控件.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,9 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = '选项卡控件,头部的条可以随着多个项目的位置而移动.使用的时候,只需要传入子控制器即可,头部条样式可以自定义'
 
   s.homepage         = 'https://github.com/609693897@qq.com/ZMJSegmentVc'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'

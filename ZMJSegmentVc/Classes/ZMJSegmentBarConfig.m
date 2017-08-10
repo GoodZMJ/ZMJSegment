@@ -15,7 +15,8 @@
 {
     ZMJSegmentBarConfig *config = [[ZMJSegmentBarConfig alloc] init];
     config.segmentBarBackColor = [UIColor clearColor];
-    config.itemFont = [UIFont systemFontOfSize:15];
+    config.itemNormalFont = [UIFont systemFontOfSize:12.0];
+    config.itemSelectFont = [UIFont systemFontOfSize:18.0];
     config.itemNormalColor = [UIColor lightGrayColor];
     config.itemSelectColor = [UIColor redColor];
     

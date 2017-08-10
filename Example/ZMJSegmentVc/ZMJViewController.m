@@ -33,19 +33,25 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    NSArray *items = @[@"专辑", @"声音", @"下载中"];
+    NSMutableArray *items = [NSMutableArray array];
+    
+    NSMutableArray *childVcArr = [NSMutableArray array];
     
     // 添加几个自控制器
     // 在contentView, 展示子控制器的视图内容
     
-    UIViewController *vc1 = [UIViewController new];
-    vc1.view.backgroundColor = [UIColor orangeColor];
-    
-    UIViewController *vc2 = [UIViewController new];
-    vc2.view.backgroundColor = [UIColor greenColor];
-    
-    UIViewController *vc3 = [UIViewController new];
-    vc3.view.backgroundColor = [UIColor yellowColor];
+    for (NSInteger i = 0; i < 10; i++) {
+        
+        [items addObject:[NSString stringWithFormat:@"第%zd个",i]];
+        
+        UIViewController *vc = [[UIViewController alloc] init];
+        
+        vc.view.backgroundColor = ZMJRandomColor;
+        
+        [childVcArr addObject:vc];
+        
+    }
+  
     
     self.segmentVC.segmentBar.frame = CGRectMake(0, 0, 300, 35);
     
@@ -53,7 +59,7 @@
     
     //    self.segmentVC.segmentBar.backgroundColor = [UIColor greenColor];
     
-    [self.segmentVC setUpWithItems:items childVCs:@[vc1, vc2, vc3]];
+    [self.segmentVC setUpWithItems:items childVCs:childVcArr];
     
     
     self.segmentVC.view.frame = self.view.bounds;
@@ -64,7 +70,7 @@
         //        config.segmentBarBackColor = [UIColor cyanColor];
         
         config.itemSC([UIColor brownColor]).itemNC([UIColor yellowColor]);
-        config.itemFont = [UIFont fontWithName:@"Zapfino" size:17.0];
+//        config.itemFont = [UIFont fontWithName:@"Zapfino" size:17.0];
         
         config.indicatorHeight = 2;
         config.indicatorColor = [UIColor blueColor];

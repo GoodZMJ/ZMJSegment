@@ -17,9 +17,13 @@
 /** 背景颜色 */
 @property (nonatomic, strong) UIColor *segmentBarBackColor;
 
+//字的颜色
 @property (nonatomic, strong) UIColor *itemNormalColor;
 @property (nonatomic, strong) UIColor *itemSelectColor;
-@property (nonatomic, strong) UIFont *itemFont;
+
+//字体大小
+@property (nonatomic, strong) UIFont *itemNormalFont;
+@property (nonatomic, strong) UIFont *itemSelectFont;
 
 @property (nonatomic, strong) UIColor *indicatorColor;
 

@@ -102,7 +102,8 @@
     for (UIButton *btn in self.itemBtns) {
         [btn setTitleColor:self.config.itemNormalColor forState:UIControlStateNormal];
         [btn setTitleColor:self.config.itemSelectColor forState:UIControlStateSelected];
-        btn.titleLabel.font = self.config.itemFont;
+        
+        [self updateBtnStatusFont:btn];
     }
     
     // 指示器
@@ -112,6 +113,16 @@
     [self layoutIfNeeded];
     
     
+}
+
+#pragma mark- (按钮不同状态下的文字大小)
+- (void)updateBtnStatusFont:(UIButton *)btn
+{
+    if (!btn.selected)
+        btn.titleLabel.font = self.config.itemNormalFont;
+    else
+        btn.titleLabel.font = self.config.itemSelectFont;
+
 }
 
 - (void)setItems:(NSArray<NSString *> *)items
@@ -129,7 +140,7 @@
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchDown];
         [btn setTitleColor:self.config.itemNormalColor forState:UIControlStateNormal];
         [btn setTitleColor:self.config.itemSelectColor forState:UIControlStateSelected];
-        btn.titleLabel.font = self.config.itemFont;
+        [self updateBtnStatusFont:btn];
         [btn setTitle:item forState:UIControlStateNormal];
         [self.contentView addSubview:btn];
         [self.itemBtns addObject:btn];
@@ -152,12 +163,15 @@
     _selectIndex = btn.tag;
     
     _lastBtn.selected = NO;
+
     btn.selected = YES;
+  
     _lastBtn = btn;
     
     [UIView animateWithDuration:0.1 animations:^{
         self.indicatorView.zmj_width = btn.zmj_width + self.config.indicatorExtraW * 2;
         self.indicatorView.zmj_centerX = btn.zmj_centerX;
+        
     }];
     
     
@@ -174,6 +188,9 @@
     
     [self.contentView setContentOffset:CGPointMake(scrollX, 0) animated:YES];
     
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+    
 }
 
 #pragma mark - 布局
@@ -184,6 +201,7 @@
     // 计算margin
     CGFloat totalBtnWidth = 0;
     for (UIButton *btn in self.itemBtns) {
+        [self updateBtnStatusFont:btn];
         [btn sizeToFit];
         totalBtnWidth += btn.zmj_width;
     }
@@ -208,6 +226,8 @@
         btn.zmj_height = self.zmj_height - self.config.indicatorHeight;
         
         lastX += btn.zmj_width + caculateMargin;
+        
+        
         
     }
     
